@@ -14,21 +14,27 @@ const button = document.createElement('div');
 //Sources
 logo.src = './images/mainlogo.png';
 
+/*const magicApi = require('mtgsdk')
 
+magicApi.card.all()
+.on('data', function(card) {
+	console.log(card.name)
+})*/
 request.open('GET', 'https://api.magicthegathering.io/v1/cards', true);
+
 
 app.appendChild(logo);
 request.onload = function(){
 	//access JSON data on API
-	const data = JSON.parse(this.response);
-	console.log(data);
+	const response = JSON.parse(this.response);
+	const cards = response.cards;
+	//console.log(data)
 	if (request.status >= 200 && request.status < 400){
-			data.cards.forEach(function(card) {
-				console.log(card);
-			});
+		let search = cards.filter( card => card.cmc == 2);
+		console.log(search);
+
 		} else {
 			console.log("we've got an error in our hands")
 		}
 	}
-
 request.send();
