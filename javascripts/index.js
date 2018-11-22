@@ -1,5 +1,8 @@
 //Get elements from HTML
 const 	app = document.getElementById('root'),
+		img1 = document.getElementById('img1'),
+		img2 = document.getElementById('img2'),
+		img3 = document.getElementById('img3'),
 		btn1 = document.getElementById('btn1'),
 		btn2 = document.getElementById('btn2'),
 		btn3 = document.getElementById('btn3');
@@ -13,6 +16,7 @@ const button = document.createElement('div');
 
 //Sources
 logo.src = './images/mainlogo.png';
+
 
 /*const magicApi = require('mtgsdk')
 
@@ -32,6 +36,9 @@ request.onload = function(){
 	if (request.status >= 200 && request.status < 400){
 		let search = cards.filter( card => card.name == 'Rancor');
 		console.log(search);
+
+		img1.appendChild('img')
+
 
 		} else {
 			console.log("we've got an error in our hands")
