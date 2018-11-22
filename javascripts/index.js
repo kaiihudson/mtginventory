@@ -40,7 +40,7 @@ function call() {
 	let cardname = prompt("card name", "card");
 	return cardname
 }
-const page = 'https://api.magicthegathering.io/v1/cards/?' + name
+const page = 'https://api.magicthegathering.io/v1/cards/?name=' + name
 fetch(page, inits)
 	.then(function(response) {
 		return response.json();
