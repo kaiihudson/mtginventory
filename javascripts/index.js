@@ -8,7 +8,6 @@ const 	app = document.getElementById('root'),
 		btn3 = document.getElementById('btn3');
 
 //Requests shortcut
-// const request = new XMLHttpRequest();
 
 //Create elements on the HTML via JS
 const logo = document.createElement('img');
