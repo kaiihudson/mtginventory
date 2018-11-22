@@ -1,5 +1,7 @@
 html, body{
 	background-color: black;
+	background-image: url('./images/inside_a_box.jpg');
+	background-size: 100% 100%;
 	color: white;
 }
 
@@ -7,4 +9,9 @@ div{
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
+}
+a{
+	color: green;
+	font-weight: bold;
+	margin: 1px
 }
