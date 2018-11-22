@@ -19,15 +19,21 @@ logo.src = './images/mainlogo.png';
 
 app.appendChild(logo);
 
-//WITH NODE.js (for production env?)
-/*
-const magicApi = require('mtgsdk')
-
-magicApi.card.all()
-.on('data', function(card) {
-	console.log(card.name)
-})
-*/
+//Functions
+function call() {
+	let cardname = prompt("card name", "card");
+	return cardname
+};
+function status(response) {
+	if (response.status >= 200 && response.status < 300) {
+		return Promise.resolve(response)
+	} else {
+		return Promise.reject(new Error(response.statusText))
+	}
+};
+function json(response) {
+	return response.json()
+}
 
 // WITH MTG API (response has only 100 registers, how do i dig deeper?)
 const header = new Headers();
@@ -36,18 +42,14 @@ const inits= {
 	headers: header,
 	mode: 'cors',
 	cache: 'default'};
-function call() {
-	let cardname = prompt("card name", "card");
-	return cardname
-}
+const name = call(); 	
 const page = 'https://api.magicthegathering.io/v1/cards/?name=' + name
 fetch(page, inits)
-	.then(function(response) {
-		return response.json();
-	})
-	.then(function(myJson) {
-		console.log(myJson);
+	.then(status)
+	.then(json)
+	.then(function(data){
+		console.log('request succeeded', data);
+	}).catch(function(error) {
+		console.log('request failed', error);
 	});
-
-
 
