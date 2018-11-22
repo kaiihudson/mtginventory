@@ -30,7 +30,7 @@ request.onload = function(){
 	const cards = response.cards;
 	//console.log(data)
 	if (request.status >= 200 && request.status < 400){
-		let search = cards.filter( card => card.cmc == 2);
+		let search = cards.filter( card => card.name == 'Rancor');
 		console.log(search);
 
 		} else {
@@ -38,3 +38,4 @@ request.onload = function(){
 		}
 	}
 request.send();
+
