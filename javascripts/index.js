@@ -21,15 +21,17 @@ logo.src = './images/mainlogo.png';
 app.appendChild(logo);
 
 //Functions
-function call() {
+function call(prop = result) {
 	let name = prompt("card name", "card");
- 	let page = 'https://api.magicthegathering.io/v1/cards/?name=' + name
+	let page = 'https://api.magicthegathering.io/v1/cards/?name=' + name
 	return fetch(page, inits)
 	.then(status)
 	.then(json)
-	.then(function(data){
-		console.log('request succeeded', data);
-		})
+	.then((data)=> {
+		if(prop){
+			prop.innerHTML = JSON.stringify(data)
+		}
+	})
 	.catch(function(error) {
 		console.log('request failed', error);
 		});
@@ -45,7 +47,7 @@ function json(response) {
 	return response.json()
 }
 function call2(){
-	let resultado = call();
+	let resultado = call(result);
 	console.log(resultado);
 }
 // WITH MTG API (response has only 100 registers, how do i dig deeper?)
@@ -54,9 +56,5 @@ const inits= {
 	method: 'GET',
 	headers: header,
 	mode: 'cors',
-	cache: 'default'};
-
-if (resultado2 != "") {
-	console.log(resultado2.cards)
-	res.innerHTML = resultado2
-}
+	cache: 'default'
+};
