@@ -5,7 +5,8 @@ const 	app = document.getElementById('root'),
 		img3 = document.getElementById('img3'),
 		btn1 = document.getElementById('btn1'),
 		btn2 = document.getElementById('btn2'),
-		btn3 = document.getElementById('btn3');
+		btn3 = document.getElementById('btn3'),
+		result = document.getElementById('results')
 
 //Requests shortcut
 
@@ -41,7 +42,7 @@ const inits= {
 	headers: header,
 	mode: 'cors',
 	cache: 'default'};
-const name = call(); 	
+//const name = call(); 	
 const page = 'https://api.magicthegathering.io/v1/cards/?name=' + name
 fetch(page, inits)
 	.then(status)
@@ -50,5 +51,8 @@ fetch(page, inits)
 		console.log('request succeeded', data);
 	}).catch(function(error) {
 		console.log('request failed', error);
-	});
+	})
+	.then(blob(response).then(function(response) {
+		results.innerHTML = response;
+	}));
 
