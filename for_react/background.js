@@ -1,7 +1,7 @@
 import React {Component} from 'react';
-import ./test.css
+import test.css
 
-class Background extend Component {
+class Background extends Component {
 	constructor() {
 		super();
 		this.state = {
